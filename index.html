@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cantinho Sonho Meu — Amigurumi feito à mão</title>
+    <title>Cantinho Sonho Meu — Crochê e papelaria feitos à mão</title>
     <meta
       name="description"
-      content="Cantinho Sonho Meu faz amigurumis de crochê sob encomenda. Veja as peças e peça o orçamento pelo WhatsApp."
+      content="Cantinho Sonho Meu faz amigurumi, outros trabalhos de crochê e papelaria sob encomenda. Veja as peças e peça o orçamento pelo WhatsApp."
     />
     <meta property="og:title" content="Cantinho Sonho Meu" />
     <meta
       property="og:description"
-      content="Amigurumis de crochê feitos à mão, sob encomenda. O orçamento fecha no WhatsApp."
+      content="Amigurumi, outros crochês e papelaria feitos à mão, sob encomenda. O orçamento fecha no WhatsApp."
     />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#fbf6e8" />
@@ -111,7 +111,8 @@
           <span>Cantinho Sonho Meu</span>
         </a>
         <nav class="nav" aria-label="Seções">
-          <a href="#pecas">Peças</a>
+          <a href="#atelie">Ateliê</a>
+          <a href="#pecas">Vitrine</a>
           <a href="#encomendar">Encomendar</a>
           <a href="#sobre">Sobre</a>
           <a data-instagram hidden>Instagram</a>
@@ -167,10 +168,11 @@
         </figure>
         <div class="hero-copy">
           <h1>Cantinho<br />Sonho Meu</h1>
-          <p class="poster-sub">Amigurumi feito à mão</p>
+          <p class="poster-sub">Crochê e papelaria feitos à mão</p>
           <p class="lead">
-            Peças de crochê para presentear e decorar. Aqui você vê o trabalho
-            com calma. No WhatsApp, a gente fecha tamanho, prazo e valor.
+            Amigurumi, outros trabalhos de crochê e papelaria para presentear
+            e decorar. Aqui você vê o ateliê com calma. No WhatsApp, a gente
+            fecha modelo, prazo e valor.
           </p>
           <div class="hero-actions">
             <a
@@ -180,22 +182,96 @@
               href="#encomendar"
               >Pedir orçamento</a
             >
-            <a class="button button-ghost" href="#pecas">Ver as peças</a>
+            <a class="button button-ghost" href="#atelie">Ver o ateliê</a>
           </div>
         </div>
       </section>
 
-      <section class="section container" id="pecas">
+      <section class="section container" id="atelie">
         <div class="section-head">
-          <p class="kicker">Vitrine</p>
-          <h2>Peças</h2>
+          <p class="kicker">O ateliê</p>
+          <h2>Três partes do mesmo cantinho</h2>
           <p>
+            O Cantinho Sonho Meu não fica só no amigurumi. Também tem outros
+            trabalhos de crochê e papelaria, tudo feito à mão e sob encomenda.
+          </p>
+        </div>
+        <div class="lines" role="group" aria-label="Escolher a vitrine">
+          <article class="line reveal is-current">
+            <p class="kicker">Crochê</p>
+            <h3>Amigurumi</h3>
+            <p>
+              Personagens, bichinhos e bonecos. A vitrine mostra algumas peças
+              que já saíram do ateliê, para você escolher e montar o pedido.
+            </p>
+            <button
+              class="button"
+              type="button"
+              data-vitrine-tab="amigurumi"
+              aria-pressed="true"
+            >
+              Ver a vitrine
+            </button>
+          </article>
+          <article class="line reveal">
+            <p class="kicker">Crochê</p>
+            <h3>Outros trabalhos</h3>
+            <p>
+              Peças de crochê além do amigurumi, para presentear, usar ou
+              decorar. Modelo, tamanho e cores se combinam no WhatsApp.
+            </p>
+            <button
+              class="button button-ghost"
+              type="button"
+              data-vitrine-tab="croche"
+              aria-pressed="false"
+            >
+              Ver a vitrine
+            </button>
+          </article>
+          <article class="line reveal">
+            <p class="kicker">Papel</p>
+            <h3>Papelaria</h3>
+            <p>
+              Itens de papelaria feitos à mão para presentear, organizar ou
+              deixar um cantinho mais bonito. O orçamento também fecha no
+              WhatsApp.
+            </p>
+            <button
+              class="button button-ghost"
+              type="button"
+              data-vitrine-tab="papelaria"
+              aria-pressed="false"
+            >
+              Ver a vitrine
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="pecas">
+        <button type="button" class="vitrine-back" data-vitrine-back hidden>
+          Voltar
+        </button>
+        <div class="section-head" aria-live="polite">
+          <p class="kicker">Vitrine</p>
+          <h2 id="vitrine-title">Amigurumi</h2>
+          <p id="vitrine-lead">
             Algumas peças que já saíram do crochê. Escolha a quantidade e
             monte o pedido. A mensagem do orçamento já sai com as peças.
           </p>
         </div>
+        <div class="vitrine-empty" id="vitrine-empty" hidden>
+          <p></p>
+          <a
+            class="button"
+            data-whatsapp="Olá! Vim pelo site do Cantinho Sonho Meu e quero encomendar um item de papelaria."
+            href="#encomendar"
+            >Pedir papelaria</a
+          >
+        </div>
         <div class="pieces">
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi">
             <button
               class="piece-photo"
               type="button"
@@ -225,7 +301,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi">
             <button
               class="piece-photo"
               type="button"
@@ -255,7 +331,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi">
             <button
               class="piece-photo"
               type="button"
@@ -285,7 +361,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi">
             <button
               class="piece-photo"
               type="button"
@@ -315,7 +391,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi">
             <button
               class="piece-photo"
               type="button"
@@ -345,7 +421,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi">
             <button
               class="piece-photo"
               type="button"
@@ -375,7 +451,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi" hidden>
             <button
               class="piece-photo"
               type="button"
@@ -437,7 +513,7 @@
             </div>
           </article>
 
-          <article class="piece reveal">
+          <article class="piece reveal" data-vitrine="amigurumi" hidden>
             <button
               class="piece-photo"
               type="button"
@@ -466,15 +542,52 @@
               </div>
             </div>
           </article>
+
+          <article class="piece reveal" data-vitrine="croche" hidden>
+            <button
+              class="piece-photo"
+              type="button"
+              data-zoom
+              data-caption="Sousplats — flores rosa"
+            >
+              <img
+                src="images/sousplats.png"
+                width="391"
+                height="518"
+                alt="Jogo de sousplats de crochê com flores rosa, folhas verdes, centro creme e borda dourada, com porta-guardanapos combinando."
+                loading="lazy"
+              />
+            </button>
+            <div class="piece-body">
+              <h3>Sousplats</h3>
+              <p>Flores rosa, centro creme e porta-guardanapos combinando.</p>
+              <div class="piece-cart" data-piece="Sousplats">
+                <div class="qty">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade dos sousplats" disabled>−</button>
+                  <span data-add-qty>1</span>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade dos sousplats">+</button>
+                </div>
+                <button type="button" class="add-cart" data-add>Adicionar</button>
+                <p class="piece-cart-note" data-piece-note hidden></p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="vitrine-more" hidden>
+          <button type="button" class="button button-ghost" data-vitrine-more>
+            Ver mais
+          </button>
         </div>
 
         <aside class="custom reveal">
           <div>
             <p class="kicker">Fora da vitrine</p>
-            <h2>Quer outro personagem?</h2>
+            <h2>Quer outro modelo?</h2>
             <p>
-              Para outro personagem, manda um print do Instagram ou uma
-              referência. A gente olha o modelo e te passa o orçamento.
+              Amigurumi que não está na vitrine, outro tipo de crochê ou
+              papelaria: manda um print ou uma referência. A gente olha o
+              pedido e te passa o orçamento.
             </p>
           </div>
           <a
@@ -484,7 +597,7 @@
             >Pedir uma peça</a
           >
         </aside>
-        <p class="fine-print">
+        <p class="fine-print" data-vitrine-note="amigurumi">
           Peças de crochê feitas à mão, sob encomenda. Personagens reproduzidos
           no ateliê, sem vínculo com as marcas originais.
         </p>
@@ -501,16 +614,17 @@
               <span>01</span>
               <h3>Você vê o trabalho</h3>
               <p>
-                No Instagram, as peças aparecem no dia a dia e chamam quem está
-                procurando um presente ou um amigurumi específico.
+                No Instagram, o trabalho aparece no dia a dia e chama quem
+                procura um presente, um amigurumi, outro crochê ou papelaria.
               </p>
             </li>
             <li class="reveal">
               <span>02</span>
               <h3>Você escolhe com calma</h3>
               <p>
-                Neste site, cada peça fica em foto grande. Dá para comparar,
-                escolher a quantidade e montar o pedido.
+                Neste site, o amigurumi fica em foto grande. Dá para comparar,
+                escolher a quantidade e montar o pedido. Crochê e papelaria
+                também se pedem por aqui.
               </p>
             </li>
             <li class="reveal">
@@ -537,9 +651,10 @@
           <p class="kicker">O ateliê</p>
           <h2>Um cantinho, ponto a ponto</h2>
           <p>
-            O Cantinho Sonho Meu faz amigurumi sob encomenda. Cada peça começa
-            quando o pedido é confirmado: o fio, o tamanho e o prazo são
-            combinados antes de o crochê começar.
+            O Cantinho Sonho Meu faz crochê e papelaria sob encomenda:
+            amigurumi, outros trabalhos de crochê e itens de papelaria. Cada
+            pedido começa quando é confirmado. Material, tamanho e prazo são
+            combinados antes de o trabalho começar.
           </p>
           <p>
             O acabamento é caprichado para a peça durar como presente, lembrança
@@ -552,12 +667,69 @@
           </ul>
         </div>
         <figure class="about-frame reveal">
-          <img
-            src="images/colecao-estante.jpg"
-            width="1600"
-            height="1200"
-            alt="Amigurumis de crochê enfileirados em uma mesa, com uma estante de livros ao fundo."
-          />
+          <div class="reel" data-reel>
+            <img
+              class="is-on"
+              src="images/colecao-estante.jpg"
+              width="1600"
+              height="1200"
+              alt="Amigurumis de crochê enfileirados em uma mesa, com uma estante de livros ao fundo."
+            />
+            <img
+              src="images/koya.jpg"
+              width="1200"
+              height="1200"
+              alt="Amigurumi de coala azul de crochê, com focinho lilás, bochechas rosadas e barriga branca."
+            />
+            <img
+              src="images/rj.jpg"
+              width="1200"
+              height="1200"
+              alt="Amigurumi branco de crochê com cachecol vermelho, olhos pretos e patas marrons."
+            />
+            <img
+              src="images/chimmy.jpg"
+              width="1200"
+              height="1200"
+              alt="Amigurumi de crochê amarelo com capuz preto, rosto branco e lacinho vermelho."
+            />
+            <img
+              src="images/tata.jpg"
+              width="1200"
+              height="1200"
+              alt="Amigurumi em formato de coração vermelho, de macacão azul com bolinhas amarelas."
+            />
+            <img
+              src="images/shooky.jpg"
+              width="1200"
+              height="1200"
+              alt="Amigurumi marrom de crochê em formato de bolinho, com boquinha aberta."
+            />
+            <img
+              src="images/ursinho.jpg"
+              width="1200"
+              height="1200"
+              alt="Amigurumi de ursinho lilás de crochê, com focinho branco, orelhas azul-claras e lenço azul."
+            />
+            <img
+              src="images/cachorrinho.jpg"
+              width="1024"
+              height="1024"
+              alt="Amigurumi de cachorro em laranja de crochê, visto de frente, com orelhas compridas e focinho marrom."
+            />
+            <img
+              src="images/gatinha.jpg"
+              width="1024"
+              height="1024"
+              alt="Amigurumi de gatinha branca de crochê, com laço rosa e jardineira pink."
+            />
+            <img
+              src="images/sousplats.png"
+              width="391"
+              height="518"
+              alt="Jogo de sousplats de crochê com flores rosa, folhas verdes, centro creme e borda dourada, com porta-guardanapos combinando."
+            />
+          </div>
         </figure>
       </section>
     </main>
@@ -566,10 +738,11 @@
       <div class="container footer-inner">
         <div>
           <p class="brand-lockup">Cantinho Sonho Meu</p>
-          <p>Amigurumi feito à mão, sob encomenda.</p>
+          <p>Crochê e papelaria feitos à mão, sob encomenda.</p>
         </div>
         <nav aria-label="Rodapé">
-          <a href="#pecas">Peças</a>
+          <a href="#atelie">Ateliê</a>
+          <a href="#pecas">Vitrine</a>
           <a href="#encomendar">Encomendar</a>
           <a href="#sobre">Sobre</a>
           <a data-instagram hidden>Instagram</a>

@@ -152,12 +152,15 @@ h2,
   justify-content: center;
   min-height: 3rem;
   padding: 0.7rem 1.25rem;
+  border: 0;
   border-radius: 999px;
   background: var(--button);
   color: #fffaf4;
-  text-decoration: none;
+  font: inherit;
   font-weight: 700;
   letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
   transition: background 0.2s ease, translate 0.2s ease;
 }
 
@@ -311,6 +314,7 @@ h1 {
 .section-head p,
 .about-copy p,
 .steps p,
+.line p,
 .custom p,
 .piece-body p {
   color: var(--muted);
@@ -439,6 +443,89 @@ h2 {
 .section-head p,
 .about-copy p {
   margin-top: 0.9rem;
+}
+
+.lines {
+  display: grid;
+  gap: 1rem;
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.25rem 1.15rem 1.35rem;
+  border-radius: 1.25rem;
+  background: var(--paper);
+  box-shadow: 0 10px 24px rgba(92, 74, 28, 0.08);
+}
+
+.line .kicker {
+  margin-bottom: 0.35rem;
+  color: var(--gold);
+}
+
+.line h3 {
+  color: var(--gold-deep);
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+}
+
+.line p:not(.kicker) {
+  margin-top: 0.45rem;
+}
+
+.line .button {
+  margin-top: 1.1rem;
+}
+
+.line.is-current {
+  box-shadow: 0 0 0 2px var(--gold-deep), 0 12px 28px rgba(92, 74, 28, 0.12);
+}
+
+.vitrine-empty {
+  padding: 1.35rem 1.2rem 1.45rem;
+  border-radius: 1.25rem;
+  background: var(--paper);
+  box-shadow: 0 10px 24px rgba(92, 74, 28, 0.08);
+}
+
+.vitrine-empty p {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.vitrine-empty .button {
+  margin-top: 1rem;
+}
+
+.vitrine-back {
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gold-deep);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.vitrine-back::before {
+  content: "← ";
+}
+
+.vitrine-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+body.is-catalog #topo,
+body.is-catalog #atelie,
+body.is-catalog #encomendar,
+body.is-catalog #sobre {
+  display: none;
 }
 
 .pieces {
@@ -707,6 +794,28 @@ h2 {
 
 .about-frame img {
   aspect-ratio: 4 / 3;
+}
+
+.reel {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1.15rem;
+  background: var(--bg-deep);
+}
+
+.reel img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.reel img.is-on {
+  opacity: 1;
 }
 
 .site-footer {
@@ -979,8 +1088,13 @@ h2 {
     font-size: 1.35rem;
   }
 
+  .lines,
   .steps {
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .steps {
     gap: 1.5rem;
   }
 
@@ -1054,7 +1168,8 @@ h2 {
   .piece-photo img,
   .piece,
   .button,
-  .piece-body a::after {
+  .piece-body a::after,
+  .reel img {
     transition: none;
   }
 

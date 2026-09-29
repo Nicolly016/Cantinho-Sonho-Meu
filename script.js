@@ -159,6 +159,127 @@ function setAddQty(card, next) {
   card.querySelector('[data-step="1"]').disabled = qty >= MAX_QTY;
 }
 
+const VITRINES = {
+  amigurumi: {
+    title: "Amigurumi",
+    lead: "Algumas peças que já saíram do crochê. Escolha a quantidade e monte o pedido. A mensagem do orçamento já sai com as peças.",
+  },
+  croche: {
+    title: "Outros trabalhos",
+    lead: "Peças de crochê além do amigurumi. Escolha a quantidade e monte o pedido. A mensagem do orçamento já sai com as peças.",
+  },
+  papelaria: {
+    title: "Papelaria",
+    lead: "Itens de papelaria feitos à mão, para presentear, organizar ou decorar.",
+    empty:
+      "Ainda não há fotos de papelaria na vitrine. Manda uma referência e a gente passa o orçamento.",
+    whatsapp:
+      "Olá! Vim pelo site do Cantinho Sonho Meu e quero encomendar um item de papelaria.",
+    cta: "Pedir papelaria",
+  },
+};
+
+const PREVIEW_LIMIT = 6;
+let vitrineKey = "amigurumi";
+let catalogOpen = false;
+
+function showVitrine(key, scroll, full) {
+  const view = VITRINES[key];
+  if (!view) return;
+  vitrineKey = key;
+  catalogOpen = Boolean(full);
+  document.body.classList.toggle("is-catalog", catalogOpen);
+
+  document.querySelectorAll("[data-vitrine-tab]").forEach((button) => {
+    const selected = button.dataset.vitrineTab === key;
+    button.setAttribute("aria-pressed", String(selected));
+    button.classList.toggle("button-ghost", !selected);
+    button.closest(".line")?.classList.toggle("is-current", selected);
+  });
+
+  let count = 0;
+  document.querySelectorAll(".piece[data-vitrine]").forEach((piece) => {
+    const match = piece.dataset.vitrine === key;
+    if (!match) {
+      piece.hidden = true;
+      return;
+    }
+    count += 1;
+    piece.hidden = !catalogOpen && count > PREVIEW_LIMIT;
+    if (!piece.hidden) piece.classList.add("is-in");
+  });
+
+  document.querySelector("#vitrine-title").textContent = view.title;
+  document.querySelector("#vitrine-lead").textContent = catalogOpen
+    ? "Todas as peças desta parte. Escolha a quantidade e monte o pedido. A mensagem do orçamento já sai com as peças."
+    : view.lead;
+
+  const empty = document.querySelector("#vitrine-empty");
+  const emptyText = empty.querySelector("p");
+  const emptyLink = empty.querySelector("a");
+  empty.hidden = count > 0;
+  emptyText.textContent = view.empty || "";
+  if (view.whatsapp) {
+    emptyLink.hidden = false;
+    emptyLink.dataset.whatsapp = view.whatsapp;
+    emptyLink.textContent = view.cta;
+  } else {
+    emptyLink.hidden = true;
+  }
+
+  document.querySelector(".vitrine-more").hidden =
+    catalogOpen || count <= PREVIEW_LIMIT;
+  document.querySelector("[data-vitrine-back]").hidden = !catalogOpen;
+
+  document.querySelectorAll("[data-vitrine-note]").forEach((note) => {
+    note.hidden = note.dataset.vitrineNote !== key;
+  });
+
+  if (scroll) {
+    document.querySelector("#pecas").scrollIntoView({ block: "start" });
+  }
+}
+
+function syncCatalog() {
+  const full = location.hash === "#catalogo";
+  if (full === catalogOpen) return;
+  const closing = catalogOpen && !full;
+  showVitrine(vitrineKey, false, full);
+  if (full) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  const home =
+    location.hash === "" ||
+    location.hash === "#pecas" ||
+    location.hash === "#topo" ||
+    location.hash === "#atelie";
+  if (closing && home) {
+    document.querySelector("#pecas").scrollIntoView({ block: "start" });
+  }
+}
+
+document.querySelectorAll("[data-vitrine-tab]").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (location.hash === "#catalogo") history.back();
+    showVitrine(button.dataset.vitrineTab, true, false);
+  });
+});
+
+document.querySelector("[data-vitrine-more]").addEventListener("click", () => {
+  if (location.hash !== "#catalogo") location.hash = "catalogo";
+  else syncCatalog();
+});
+
+document.querySelector("[data-vitrine-back]").addEventListener("click", () => {
+  if (location.hash === "#catalogo") history.back();
+  else showVitrine(vitrineKey, true, false);
+});
+
+window.addEventListener("hashchange", syncCatalog);
+
+showVitrine("amigurumi", false, location.hash === "#catalogo");
+
 document.querySelector("#pecas").addEventListener("click", (event) => {
   const stepButton = event.target.closest("[data-step]");
   if (stepButton) {
@@ -298,4 +419,39 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
     item.style.setProperty("--d", `${(index % 3) * 90}ms`);
     observer.observe(item);
   });
+}
+
+const reel = document.querySelector("[data-reel]");
+if (reel && !reduceMotion) {
+  const slides = [...reel.querySelectorAll("img")];
+  let index = 0;
+  let timer = 0;
+
+  slides.forEach((slide, slideIndex) => {
+    if (slideIndex > 0) slide.setAttribute("aria-hidden", "true");
+  });
+
+  const show = (next) => {
+    slides[index].classList.remove("is-on");
+    slides[index].setAttribute("aria-hidden", "true");
+    index = (next + slides.length) % slides.length;
+    slides[index].classList.add("is-on");
+    slides[index].removeAttribute("aria-hidden");
+  };
+
+  const stop = () => window.clearInterval(timer);
+  const start = () => {
+    stop();
+    timer = window.setInterval(() => show(index + 1), 3800);
+  };
+
+  reel.addEventListener("mouseenter", stop);
+  reel.addEventListener("mouseleave", start);
+  reel.addEventListener("focusin", stop);
+  reel.addEventListener("focusout", start);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else start();
+  });
+  start();
 }
