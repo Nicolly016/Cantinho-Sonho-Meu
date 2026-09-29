@@ -114,6 +114,7 @@
           <a href="#atelie">Ateliê</a>
           <a href="#catalogo">Vitrine</a>
           <a href="#encomendar">Encomendar</a>
+          <a href="#entregas">Entregas</a>
           <a href="#sobre">Sobre</a>
           <a data-instagram hidden>Instagram</a>
         </nav>
@@ -254,7 +255,7 @@
             <div class="line-face">
                 <h3>Papelaria</h3>
                 <p>
-                  Papel feito à mão para presentear e organizar. O orçamento fecha no WhatsApp.
+                  Papel feito à mão para presentear e organizar.
                 </p>
                 <button
                   class="button button-ghost"
@@ -563,6 +564,36 @@
             </div>
           </article>
 
+          <article class="piece reveal" data-vitrine="amigurumi" hidden>
+            <button
+              class="piece-photo"
+              type="button"
+              data-zoom
+              data-caption="Casal de gansos — chapéus"
+            >
+              <img
+                src="images/gansos.jpg"
+                width="1024"
+                height="1024"
+                alt="Casal de gansos de crochê brancos no jardim. Ela usa chapéu amarelo e ele usa chapéu marrom com gravata borboleta amarela."
+                loading="lazy"
+              />
+            </button>
+            <div class="piece-body">
+              <h3>Casal de gansos</h3>
+              <p>Ela de chapéu amarelo e ele de chapéu com gravata.</p>
+              <div class="piece-cart" data-piece="Casal de gansos">
+                <div class="qty">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade do casal de gansos" disabled>−</button>
+                  <span data-add-qty>1</span>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade do casal de gansos">+</button>
+                </div>
+                <button type="button" class="add-cart" data-add>Adicionar</button>
+                <p class="piece-cart-note" data-piece-note hidden></p>
+              </div>
+            </div>
+          </article>
+
           <article class="piece reveal" data-vitrine="croche" hidden>
             <button
               class="piece-photo"
@@ -586,6 +617,36 @@
                   <button type="button" data-step="-1" aria-label="Diminuir quantidade dos sousplats" disabled>−</button>
                   <span data-add-qty>1</span>
                   <button type="button" data-step="1" aria-label="Aumentar quantidade dos sousplats">+</button>
+                </div>
+                <button type="button" class="add-cart" data-add>Adicionar</button>
+                <p class="piece-cart-note" data-piece-note hidden></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="piece reveal" data-vitrine="croche" hidden>
+            <button
+              class="piece-photo"
+              type="button"
+              data-zoom
+              data-caption="Corações — vermelho e dourado"
+            >
+              <img
+                src="images/coracoes.png"
+                width="503"
+                height="524"
+                alt="Corações de crochê vermelho, com borda dourada ondulada, sobre uma mesa de madeira."
+                loading="lazy"
+              />
+            </button>
+            <div class="piece-body">
+              <h3>Corações</h3>
+              <p>Crochê vermelho, com borda dourada em ondas.</p>
+              <div class="piece-cart" data-piece="Corações">
+                <div class="qty">
+                  <button type="button" data-step="-1" aria-label="Diminuir quantidade dos corações" disabled>−</button>
+                  <span data-add-qty>1</span>
+                  <button type="button" data-step="1" aria-label="Aumentar quantidade dos corações">+</button>
                 </div>
                 <button type="button" class="add-cart" data-add>Adicionar</button>
                 <p class="piece-cart-note" data-piece-note hidden></p>
@@ -652,7 +713,7 @@
               <h3>Você fecha no WhatsApp</h3>
               <p>
                 A conversa já abre com as peças e a quantidade. Ali a gente
-                combina tamanho, cores, prazo e o valor.
+                combina tamanho, cores, prazo, o valor e a entrega.
               </p>
             </li>
           </ol>
@@ -664,6 +725,39 @@
             >Chamar no WhatsApp</a
           >
         </div>
+      </section>
+
+      <section class="section container" id="entregas">
+        <div class="section-head">
+          <p class="kicker">Entrega</p>
+          <h2>Onde a peça chega</h2>
+          <p>
+            A entrega é feita em Natal, Parnamirim e na Grande Natal. O dia e
+            o local se combinam no WhatsApp, junto com o pedido.
+          </p>
+        </div>
+        <ul class="places">
+          <li class="reveal">
+            <h3>Natal</h3>
+            <p>Entrega na capital.</p>
+          </li>
+          <li class="reveal">
+            <h3>Parnamirim</h3>
+            <p>Entrega na cidade.</p>
+          </li>
+          <li class="reveal">
+            <h3>Grande Natal</h3>
+            <p>Entrega na região.</p>
+          </li>
+        </ul>
+        <aside class="delivery-note reveal">
+          <p class="kicker">Fora do estado</p>
+          <h2>Encomenda para outro estado</h2>
+          <p>
+            Fora do Rio Grande do Norte, a entrega é combinada. No WhatsApp a
+            gente acerta a forma de envio, o prazo e o valor.
+          </p>
+        </aside>
       </section>
 
       <section class="section container about" id="sobre">
@@ -744,10 +838,22 @@
               alt="Amigurumi de gatinha branca de crochê, com laço rosa e jardineira pink."
             />
             <img
+              src="images/gansos.jpg"
+              width="1024"
+              height="1024"
+              alt="Casal de gansos de crochê brancos no jardim. Ela usa chapéu amarelo e ele usa chapéu marrom com gravata borboleta amarela."
+            />
+            <img
               src="images/sousplats.png"
               width="391"
               height="518"
               alt="Jogo de sousplats de crochê com flores rosa, folhas verdes, centro creme e borda dourada, com porta-guardanapos combinando."
+            />
+            <img
+              src="images/coracoes.png"
+              width="503"
+              height="524"
+              alt="Corações de crochê vermelho, com borda dourada ondulada, sobre uma mesa de madeira."
             />
           </div>
         </figure>
@@ -764,6 +870,7 @@
           <a href="#atelie">Ateliê</a>
           <a href="#catalogo">Vitrine</a>
           <a href="#encomendar">Encomendar</a>
+          <a href="#entregas">Entregas</a>
           <a href="#sobre">Sobre</a>
           <a data-instagram hidden>Instagram</a>
           <a

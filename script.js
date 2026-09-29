@@ -182,6 +182,21 @@ const VITRINES = {
 const PREVIEW_LIMIT = 6;
 let vitrineKey = "amigurumi";
 let catalogOpen = false;
+const pieceOrder = new Map();
+
+function piecesFor(key) {
+  if (!pieceOrder.has(key)) {
+    const pieces = [
+      ...document.querySelectorAll(`.piece[data-vitrine="${key}"]`),
+    ];
+    for (let index = pieces.length - 1; index > 0; index -= 1) {
+      const swap = Math.floor(Math.random() * (index + 1));
+      [pieces[index], pieces[swap]] = [pieces[swap], pieces[index]];
+    }
+    pieceOrder.set(key, pieces);
+  }
+  return pieceOrder.get(key);
+}
 
 function showVitrine(key, scroll, full) {
   const view = VITRINES[key];
@@ -197,17 +212,18 @@ function showVitrine(key, scroll, full) {
     button.closest(".line")?.classList.toggle("is-current", selected);
   });
 
-  let count = 0;
+  const grid = document.querySelector(".pieces");
+  const pieces = piecesFor(key);
+  pieces.forEach((piece) => grid.appendChild(piece));
+
   document.querySelectorAll(".piece[data-vitrine]").forEach((piece) => {
-    const match = piece.dataset.vitrine === key;
-    if (!match) {
-      piece.hidden = true;
-      return;
-    }
-    count += 1;
-    piece.hidden = !catalogOpen && count > PREVIEW_LIMIT;
+    piece.hidden = piece.dataset.vitrine !== key;
+  });
+  pieces.forEach((piece, index) => {
+    piece.hidden = !catalogOpen && index >= PREVIEW_LIMIT;
     if (!piece.hidden) piece.classList.add("is-in");
   });
+  const count = pieces.length;
 
   document.querySelector("#vitrine-title").textContent = view.title;
   document.querySelector("#vitrine-lead").textContent = catalogOpen
@@ -254,8 +270,15 @@ function syncCatalog() {
     location.hash === "#pecas" ||
     location.hash === "#topo" ||
     location.hash === "#atelie";
-  if (closing && home) {
-    document.querySelector("#pecas").scrollIntoView({ block: "start" });
+  if (closing) {
+    const section = ["#entregas", "#encomendar", "#sobre"].includes(
+      location.hash
+    )
+      ? document.querySelector(location.hash)
+      : home
+        ? document.querySelector("#pecas")
+        : null;
+    section?.scrollIntoView({ block: "start" });
   }
 }
 

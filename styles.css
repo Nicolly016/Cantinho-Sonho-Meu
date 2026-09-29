@@ -463,35 +463,36 @@ h2 {
 
 .line-face {
   position: absolute;
-  top: 48%;
-  right: 12%;
-  bottom: 9%;
-  left: 12%;
+  top: 46%;
+  right: 13%;
+  bottom: 8%;
+  left: 13%;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   text-align: center;
 }
 
 .line h3 {
-  color: #9a3d0c;
-  font-size: 1.45rem;
+  color: var(--gold-deep);
+  font-size: 1.28rem;
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .line p {
-  color: #4e321f;
+  color: var(--ink);
 }
 
 .line p:not(.kicker) {
-  max-width: 16rem;
-  margin-top: 0.3rem;
-  margin-bottom: 0;
-  font-size: 0.86rem;
+  min-height: 2.7em;
+  max-width: 14.5rem;
+  margin: 0;
+  font-size: 0.84rem;
   line-height: 1.35;
 }
 
@@ -500,9 +501,9 @@ h2 {
 }
 
 .line .button {
-  min-height: 2.35rem;
-  margin-top: 0.7rem;
-  padding: 0.35rem 0.95rem;
+  min-height: 2.2rem;
+  margin-top: 0.1rem;
+  padding: 0.3rem 0.95rem;
 }
 
 .line.is-current {
@@ -550,6 +551,7 @@ h2 {
 body.is-catalog #topo,
 body.is-catalog #atelie,
 body.is-catalog #encomendar,
+body.is-catalog #entregas,
 body.is-catalog #sobre {
   display: none;
 }
@@ -758,6 +760,49 @@ body.is-catalog #sobre {
 
 .fine-print {
   margin-top: 1rem;
+}
+
+.places {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.places li {
+  padding: 1.15rem 1.1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--paper);
+  box-shadow: 0 10px 24px rgba(92, 74, 28, 0.08);
+}
+
+.places h3 {
+  color: var(--gold-deep);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.places p {
+  margin-top: 0.25rem;
+  color: var(--muted);
+}
+
+.delivery-note {
+  margin-top: 1.4rem;
+  padding: 1.4rem;
+  border-radius: 1.5rem;
+  background: var(--butter);
+}
+
+.delivery-note h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.delivery-note p:not(.kicker) {
+  max-width: 40rem;
+  margin-top: 0.55rem;
+  color: var(--muted);
 }
 
 .section-band {
@@ -1115,6 +1160,7 @@ body.is-catalog #sobre {
   }
 
   .lines,
+  .places,
   .steps {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.2rem;
