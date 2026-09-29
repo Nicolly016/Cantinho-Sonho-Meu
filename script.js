@@ -261,8 +261,13 @@ function syncCatalog() {
 
 document.querySelectorAll("[data-vitrine-tab]").forEach((button) => {
   button.addEventListener("click", () => {
-    if (location.hash === "#catalogo") history.back();
-    showVitrine(button.dataset.vitrineTab, true, false);
+    vitrineKey = button.dataset.vitrineTab;
+    if (location.hash !== "#catalogo") {
+      location.hash = "catalogo";
+      return;
+    }
+    showVitrine(vitrineKey, false, true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
 
